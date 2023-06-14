@@ -17,8 +17,7 @@ import com.example.demo.service.IEstudianteService;
 public class Pa2U2P4Dc1Application implements CommandLineRunner {
 
 	
-	@Autowired 
-	private ICuentaService cuentaService;
+
 	
 	public static void main(String[] args) {
 		SpringApplication.run(Pa2U2P4Dc1Application.class, args);
@@ -28,16 +27,7 @@ public class Pa2U2P4Dc1Application implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
 		
-		CuentaBancaria cuentaBancaria1 = new CuentaBancaria();
-		cuentaBancaria1.setCedulaPropietario("1751457167");
-		cuentaBancaria1.setFecha(LocalDateTime.now());
-		cuentaBancaria1.setNumero("121212");
-		cuentaBancaria1.setTipo("Corriente");
 		
-		//this.cuentaService.aperturarCuenta(cuentaBancaria1);
-		this.cuentaService.ingresarDeposito(2, new BigDecimal(300));
-		CuentaBancaria c = this.cuentaService.consultarSaldo(2);
-		System.out.println("Su saldo de la cuenta es: "  +c.getSaldo());
 		
 	}
 
