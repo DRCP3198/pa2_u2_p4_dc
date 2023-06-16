@@ -1,5 +1,6 @@
 package com.example.demo.modelo;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -30,7 +31,7 @@ public class Ciudadano {
 	private String apellido;
 	
 	//en la tabla principal en la columna que hace la referencia de la relacion uno a uno se colaca la anotacion @OneToOne
-	@OneToOne(mappedBy = "ciudadano") 
+	@OneToOne(mappedBy = "ciudadano", cascade = CascadeType.ALL) 
 	private Empleado empleado;
 	
 	@Override
