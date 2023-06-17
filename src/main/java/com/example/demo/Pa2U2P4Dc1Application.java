@@ -1,7 +1,6 @@
 package com.example.demo;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -10,12 +9,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.example.demo.modelo.Ciudadano;
 import com.example.demo.modelo.Empleado;
-import com.example.demo.modelo.Estudiante;
-import com.example.demo.modelo.banco.CuentaBancaria;
-import com.example.demo.modelo.banco.service.ICuentaService;
 import com.example.demo.service.ICiudadanoService;
 import com.example.demo.service.IEmpleadoService;
-import com.example.demo.service.IEstudianteService;
+
+
 
 @SpringBootApplication
 public class Pa2U2P4Dc1Application implements CommandLineRunner {
@@ -36,19 +33,27 @@ public class Pa2U2P4Dc1Application implements CommandLineRunner {
 		// TODO Auto-generated method stub
 		
 		Ciudadano ciudadano = new Ciudadano();
-		ciudadano.setNombre("Dillan");
-		ciudadano.setApellido("Coloma");
-		ciudadano.setCedula("1751457167");
+		ciudadano.setNombre("Carmen");
+		ciudadano.setApellido("Jurado");
+		ciudadano.setCedula("1751452456");
 		
+		Ciudadano ciudadano1 = new Ciudadano();
+		ciudadano1.setNombre("Anthony");
+		ciudadano1.setApellido("Narvaez");
+		ciudadano1.setCedula("1751489898");
 		
 		Empleado empleado = new Empleado();
-		empleado.setCiudadano(ciudadano);
+		empleado.setCiudadano(ciudadano1);
 		empleado.setCargo("Gerente");
-		empleado.setSueldo(new BigDecimal(1500));
-		ciudadano.setEmpleado(empleado);
-		this.ciudadanoService.agregar(ciudadano);
+		empleado.setSueldo(new BigDecimal(2000));
+		//ciudadano.setEmpleado(empleado);
+		/*this.ciudadanoService.agregar(ciudadano);
+		this.ciudadanoService.encontrar(1);
+		this.ciudadanoService.borrar(2);
+		this.ciudadanoService.modificar(ciudadano);*/
+		this.empleadoService.agregar(empleado);
+        this.ciudadanoService.agregar(ciudadano);
 		
-
 		
 	}
 

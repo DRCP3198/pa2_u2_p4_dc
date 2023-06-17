@@ -32,6 +32,7 @@ public class Ciudadano {
 	
 	//en la tabla principal en la columna que hace la referencia de la relacion uno a uno se colaca la anotacion @OneToOne
 	@OneToOne(mappedBy = "ciudadano", cascade = CascadeType.ALL) 
+	
 	private Empleado empleado;
 	
 	@Override
