@@ -19,5 +19,7 @@ public interface IEstudianteRepo {
 	//TYPED QUERY
 	public Estudiante seleccionarPorApellidoTyped(String apellido);
 
+	//NAMED QUERY
+	public Estudiante seleccionaPorApellidoNamed(String apellido);
 
 }

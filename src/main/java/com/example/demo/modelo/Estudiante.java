@@ -7,11 +7,14 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.NamedQuery;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 
 @Table(name = "estudiante")
 @Entity //cuando mapeo una tabla con un objeto pasa a ser una ENTIDAD
+@NamedQuery(name = "Estudiante.buscaPorApellido",query = "select e from Estudiante e where e.apellido = :datoApellido")
+
 public class Estudiante {
 	
 	@Id
