@@ -5,21 +5,37 @@ import java.util.List;
 import com.example.demo.modelo.Estudiante;
 
 public interface IEstudianteRepo {
-	
-	
+
 	public void insertar(Estudiante estudiante);
+
 	public void actualizar(Estudiante estudiante);
+
 	public Estudiante buscar(String cedula);
+
 	public void eliminar(String cedula);
-	
-	//QUERY
+
+	// QUERY
 	public Estudiante seleccionarPorApellido(String apellido);
+
 	public List<Estudiante> seleccionarListaPorApellido(String apellido);
+
 	public Estudiante selecionarPorApellidoYNombre(String apellido, String nombre);
-	//TYPED QUERY
+
+	// TYPED QUERY
 	public Estudiante seleccionarPorApellidoTyped(String apellido);
 
-	//NAMED QUERY
+	// NAMED QUERY
 	public Estudiante seleccionaPorApellidoNamed(String apellido);
+	public Estudiante seleccionaPorNombreNamed(String nombre);
 
+	public Estudiante seleccionaPorApellidoNamedQuery(String apellido);
+
+	// NATIVEQUERY
+	public Estudiante seleccionaPorApellidoNative(String apellido);
+
+	// NATIVEQUERYNamed
+	public Estudiante seleccionaPorApellidoNativeQueryNamed(String apellido);
+	public Estudiante seleccionaPorNombreNativeQueryNamed(String nombre);
+	//CRITERIA API QUERY
+	public Estudiante seleccionaPorApellidoCriteriaApiQuery(String apellido);
 }

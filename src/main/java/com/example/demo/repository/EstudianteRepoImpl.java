@@ -6,10 +6,15 @@ import org.springframework.stereotype.Repository;
 
 import com.example.demo.modelo.Estudiante;
 
+import aj.org.objectweb.asm.Type;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Predicate;
+import jakarta.persistence.criteria.Root;
 import jakarta.transaction.Transactional;
 
 @Repository
@@ -88,6 +93,76 @@ public class EstudianteRepoImpl implements IEstudianteRepo {
 				Estudiante.class);
         myQuery.setParameter("datoApellido", apellido);
 		return myQuery.getSingleResult();
+	}
+
+	@Override
+	public Estudiante seleccionaPorApellidoNamedQuery(String apellido) {
+		// TODO Auto-generated method stub
+		  Query myQuery=this.entityManager.createNamedQuery("Estudiante.buscaPorApellido");
+	        myQuery.setParameter("datoApellido", apellido);
+			return (Estudiante) myQuery.getSingleResult();
+	}
+
+	//NATIVE QUERY
+	@Override
+	public Estudiante seleccionaPorApellidoNative(String apellido) {
+		// TODO Auto-generated method stub
+	Query query= this.entityManager.createNativeQuery("select * from Estudiante  where estu_apellido = :datoApellido",Estudiante.class);
+	query.setParameter("datoApellido", apellido);
+		return (Estudiante) query.getSingleResult();
+	}
+
+	@Override
+	public Estudiante seleccionaPorApellidoNativeQueryNamed(String apellido) {
+		// TODO Auto-generated method stub
+		TypedQuery<Estudiante> myQuery = this.entityManager.createNamedQuery("Estudiante.buscarPorApellidoNative",
+				Estudiante.class);
+        myQuery.setParameter("datoApellido", apellido);
+		return myQuery.getSingleResult();
+		
+	}
+
+	@Override
+	public Estudiante seleccionaPorNombreNamed(String nombre) {
+		// TODO Auto-generated method stub
+		// TODO Auto-generated method stub
+		  Query myQuery=this.entityManager.createNamedQuery("Estudiante.buscaPorNombre");
+	        myQuery.setParameter("datoNombre", nombre);
+			return (Estudiante) myQuery.getSingleResult();
+	}
+
+	@Override
+	public Estudiante seleccionaPorNombreNativeQueryNamed(String nombre) {
+		// TODO Auto-generated method stub
+		TypedQuery<Estudiante> myQuery = this.entityManager.createNamedQuery("Estudiante.buscarPorNombreNative",
+				Estudiante.class);
+        myQuery.setParameter("datoNombre", nombre);
+		return myQuery.getSingleResult();	}
+
+	@Override
+	public Estudiante seleccionaPorApellidoCriteriaApiQuery(String apellido) {
+		// TODO Auto-generated method stub
+		
+		CriteriaBuilder myBuilder=this.entityManager.getCriteriaBuilder();
+		//1. Especificamos el tipo de retorno que tiene mi Query
+		CriteriaQuery<Estudiante> myCriteriaQuery= myBuilder.createQuery(Estudiante.class);
+		
+		//2. Empezamos a crear el SQL
+		//2.1 Definimos el from(Root)
+		Root<Estudiante> miTablaFrom= myCriteriaQuery.from(Estudiante.class); //FROM Estudiante
+		//3 Construir las condiciones de mi SQL por el where en criterial api las condiciones
+		//se las conoce como predicados
+		//e.apellido= :datoApellido
+		Predicate condicionApellido = myBuilder.equal(miTablaFrom.get("apellido"), apellido);
+		//4. Armamos mi SQL  final
+		myCriteriaQuery.select(miTablaFrom).where(condicionApellido);
+		
+		//5. La ejecucion del Query lo realizamos con TypedQuery
+		TypedQuery<Estudiante>myQueryFinal= this.entityManager.createQuery(myCriteriaQuery);
+		
+		return myQueryFinal.getSingleResult();
+		
+		
 	}
 
 }

@@ -23,4 +23,19 @@ public interface IEstudianteService {
 
 	// TYPED QUERY
 	public Estudiante buscarPorApellidoTyped(String apellido);
+
+	// NAMED QUERY
+	public Estudiante encontrarPorApellidoNamed(String apellido);
+	public Estudiante encontrarPorNombreNamed(String nombre);
+
+	public Estudiante encontrarPorApellidoNamedQuery(String apellido);
+
+	// NATIVE QUERY
+	public Estudiante encontrarPorApellidoNative(String apellido);
+
+	// NATIVEQUERYNamed
+	public Estudiante encontrarPorApellidoNativeQueryNamed(String apellido);
+	public Estudiante encontrarPorNombreNativeQueryNamed(String nombre);
+	//CRITERIAL API QUERY
+	public Estudiante encontrarPorApellidoCriteriaApiQuery(String apellido);
 }

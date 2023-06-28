@@ -24,9 +24,6 @@ import com.example.demo.service.IMatriculaService;
 @SpringBootApplication
 public class Pa2U2P4Dc1Application implements CommandLineRunner {
 
-
-	
-    
 	@Autowired
 	private IEstudianteService estudianteService;
     
@@ -42,19 +39,16 @@ public class Pa2U2P4Dc1Application implements CommandLineRunner {
        estu.setCedula("200200100");
        estu.setNombre("Ale");
        
-       //this.estudianteService.agregar(estu);
-       this.estudianteService.buscarPorApellido("Perez");
-       Estudiante e= this.estudianteService.buscarPorApellidoYNombre("Perez", "Ale");
-       System.out.println("QUERY");
-       System.out.println("Buscar por apellido y nombre: "+e);
-	   List<Estudiante> estudiante = this.estudianteService.buscarListaPorApellido("Pastrano");
-	   for (Estudiante estudiante2 : estudiante) {
-		System.out.println("Buscar reporte de estudiantes: "+estudiante2);
-	}
-	  System.out.println(); 
-	  System.out.println("TYPED QUERY");
-	  Estudiante e1= this.estudianteService.buscarPorApellidoTyped("Perez");
-	  System.out.println(e1);
+       Estudiante a=this.estudianteService.encontrarPorApellidoNamed("Perez");
+       System.out.println(a);
+       Estudiante b=this.estudianteService.encontrarPorApellidoNamedQuery("Perez");
+       System.out.println(b);
+       
+       this.estudianteService.encontrarPorApellidoNative("Perez");
+       this.estudianteService.encontrarPorApellidoNativeQueryNamed("Perez");
+       this.estudianteService.encontrarPorNombreNamed("Ale");
+       this.estudianteService.encontrarPorNombreNativeQueryNamed("Ale");
+       this.estudianteService.encontrarPorApellidoCriteriaApiQuery("Perez");
 	}
 
 }
