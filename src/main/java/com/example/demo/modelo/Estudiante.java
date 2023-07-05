@@ -45,10 +45,33 @@ public class Estudiante {
 
 	@Column(name = "estu_apellido")
 	private String apellido;
+	
+
+	@Column(name = "estu_peso")
+	private Double peso;
+
+
 
 	@Override
 	public String toString() {
-		return "Estudiante [id=" + id + ", cedula=" + cedula + ", nombre=" + nombre + ", apellido=" + apellido + "]";
+		return "Estudiante [id=" + id + ", cedula=" + cedula + ", nombre=" + nombre + ", apellido=" + apellido
+				+ ", peso=" + peso + "]";
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public Double getPeso() {
+		return peso;
+	}
+
+	public void setPeso(Double peso) {
+		this.peso = peso;
 	}
 
 	// SET y GET

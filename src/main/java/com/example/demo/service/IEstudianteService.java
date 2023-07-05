@@ -26,6 +26,7 @@ public interface IEstudianteService {
 
 	// NAMED QUERY
 	public Estudiante encontrarPorApellidoNamed(String apellido);
+
 	public Estudiante encontrarPorNombreNamed(String nombre);
 
 	public Estudiante encontrarPorApellidoNamedQuery(String apellido);
@@ -35,7 +36,16 @@ public interface IEstudianteService {
 
 	// NATIVEQUERYNamed
 	public Estudiante encontrarPorApellidoNativeQueryNamed(String apellido);
+
 	public Estudiante encontrarPorNombreNativeQueryNamed(String nombre);
-	//CRITERIAL API QUERY
+
+	// CRITERIAL API QUERY
 	public Estudiante encontrarPorApellidoCriteriaApiQuery(String apellido);
+
+	public Estudiante encontrarEstudianteDinamico(String nombre, String apellido, Double peso);
+	
+	//ELIMINAR
+    public int borrarPorNombre(String nombre);
+    //ACTUALIZAR
+    public int modificarPorApellidoYNombre(String nombre,String apellido);
 }

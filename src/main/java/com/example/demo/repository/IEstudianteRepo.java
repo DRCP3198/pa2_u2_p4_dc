@@ -38,4 +38,10 @@ public interface IEstudianteRepo {
 	public Estudiante seleccionaPorNombreNativeQueryNamed(String nombre);
 	//CRITERIA API QUERY
 	public Estudiante seleccionaPorApellidoCriteriaApiQuery(String apellido);
+    public Estudiante selecccionarEstudianteDinamico(String nombre,String apellido,Double peso);
+
+    //ELIMINAR
+    public int eliminarPorNombre(String nombre);
+    //ACTUALIZAR
+    public int actualizarPorApellidoYNombre(String nombre,String apellido);
 }
