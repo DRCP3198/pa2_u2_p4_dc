@@ -3,6 +3,7 @@ package com.example.demo.service;
 import java.util.List;
 
 import com.example.demo.modelo.Estudiante;
+import com.example.demo.modelo.dto.EstudianteDTO;
 
 public interface IEstudianteService {
 
@@ -48,4 +49,8 @@ public interface IEstudianteService {
     public int borrarPorNombre(String nombre);
     //ACTUALIZAR
     public int modificarPorApellidoYNombre(String nombre,String apellido);
+
+    //DTO
+	public List<EstudianteDTO> reporteDTO();
+
 }

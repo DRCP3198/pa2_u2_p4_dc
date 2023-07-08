@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.modelo.Estudiante;
+import com.example.demo.modelo.dto.EstudianteDTO;
 import com.example.demo.repository.IEstudianteRepo;
 
 @Service
@@ -123,6 +124,12 @@ public class EstudianteServiceImpl implements IEstudianteService {
 	public int modificarPorApellidoYNombre(String nombre, String apellido) {
 		// TODO Auto-generated method stub
 		return this.estudianteRepo.actualizarPorApellidoYNombre(nombre, apellido);
+	}
+
+	@Override
+	public List<EstudianteDTO> reporteDTO() {
+		// TODO Auto-generated method stub
+		return this.estudianteRepo.seleccionarTodosDTO();
 	}
 
 }

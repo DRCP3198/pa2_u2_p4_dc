@@ -3,6 +3,7 @@ package com.example.demo.repository;
 import java.util.List;
 
 import com.example.demo.modelo.Estudiante;
+import com.example.demo.modelo.dto.EstudianteDTO;
 
 public interface IEstudianteRepo {
 
@@ -44,4 +45,8 @@ public interface IEstudianteRepo {
     public int eliminarPorNombre(String nombre);
     //ACTUALIZAR
     public int actualizarPorApellidoYNombre(String nombre,String apellido);
+
+    //Para usar el DTO
+    public List<EstudianteDTO> seleccionarTodosDTO();
+
 }

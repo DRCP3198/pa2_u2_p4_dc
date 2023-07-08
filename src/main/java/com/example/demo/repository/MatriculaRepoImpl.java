@@ -1,18 +1,22 @@
 package com.example.demo.repository;
 
+import java.util.List;
+
 import org.springframework.stereotype.Repository;
 
 import com.example.demo.modelo.Matricula;
+import com.example.demo.modelo.dto.MatriculaDTO;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.TypedQuery;
 import jakarta.transaction.Transactional;
 
 @Transactional
 @Repository
 public class MatriculaRepoImpl implements IMatriculaRepository {
-	
+
 	@PersistenceContext
 	private EntityManager entityManager;
 
@@ -30,7 +34,7 @@ public class MatriculaRepoImpl implements IMatriculaRepository {
 
 	@Override
 	public Matricula buscar(Integer id) {
-		
+
 		return this.entityManager.find(Matricula.class, id);
 	}
 
@@ -38,6 +42,15 @@ public class MatriculaRepoImpl implements IMatriculaRepository {
 	public void eliminar(Integer id) {
 		// TODO Auto-generated method stub
 		this.entityManager.remove(this.buscar(id));
+	}
+
+	@Override
+	public List<MatriculaDTO> buscarTodas() {
+		// TODO Auto-generated method stub
+		TypedQuery<MatriculaDTO> query = this.entityManager.createQuery(
+				"SELECT new com.example.demo.modelo.dto.MatriculaDTO(m.alumno.nombre,m.materia.nombre)from Matricula m",
+				MatriculaDTO.class);
+		return query.getResultList();
 	}
 
 }
